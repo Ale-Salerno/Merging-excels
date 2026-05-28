@@ -32,6 +32,7 @@ class SourceReport:
 
 
 def source_priority(path: Path) -> tuple[int, str]:
+    """Sort merge inputs so the mentioned-terms workbook is processed last and overrides earlier sources."""
     name = path.name.upper()
     if "MENTIONED TERMS TO BE KEPT IN EN" in name:
         return (1, name)
