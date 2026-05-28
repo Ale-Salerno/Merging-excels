@@ -13,10 +13,10 @@ from openpyxl.worksheet.worksheet import Worksheet
 
 MASTER_DEFAULT = "Kopie von translations_export_20.05.2026.xlsx"
 SOURCE_DEFAULTS = [
-    "Review_translations08.04.2026 (002) - MENTIONED TERMS TO BE KEPT IN EN.xlsx",
     "Review_translations08.04.2026 (002) - TO TRANSLATE FROM DE WITH EN REFERENCE.xlsx",
     "Review_translations08.04.2026 (002) - TO TRANSLATE FROM EN AS CORRECTION.xlsx",
     "Review_translations08.04.2026 (002) - TO TRANSLATE FROM EN WITH DE REFERENCE.xlsx",
+    "Review_translations08.04.2026 (002) - MENTIONED TERMS TO BE KEPT IN EN.xlsx",
 ]
 
 
@@ -29,6 +29,13 @@ class SourceReport:
     duplicate_ids_detected: int
     duplicate_ids: list[str]
     matched_ids_different_row_number: int
+
+
+def source_priority(path: Path) -> tuple[int, str]:
+    name = path.name.upper()
+    if "MENTIONED TERMS TO BE KEPT IN EN" in name:
+        return (1, name)
+    return (0, name)
 
 
 def normalize_id(value: Any) -> str | None:
@@ -119,7 +126,9 @@ def merge_sources(
     reports: list[SourceReport] = []
     total_updates = 0
 
-    for source_path in source_paths:
+    ordered_source_paths = sorted(source_paths, key=source_priority)
+
+    for source_path in ordered_source_paths:
         source_wb = load_workbook(source_path, data_only=False)
         source_sheet = source_wb["Sheet1"]
         source_headers = source_columns_by_header(source_sheet)
@@ -193,6 +202,7 @@ def merge_sources(
         "merge_key": "key",
         "merge_mode": "id-based",
         "source_cell_filter": "colored-cells-only",
+        "merge_order": [path.name for path in ordered_source_paths],
         "total_colored_updates_applied": total_updates,
         "per_source": [report.__dict__ for report in reports],
     }

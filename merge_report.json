@@ -3,21 +3,18 @@
   "merge_key": "key",
   "merge_mode": "id-based",
   "source_cell_filter": "colored-cells-only",
-  "total_colored_updates_applied": 184,
+  "merge_order": [
+    "Review_translations08.04.2026 (002) - TO TRANSLATE FROM DE WITH EN REFERENCE.xlsx",
+    "Review_translations08.04.2026 (002) - TO TRANSLATE FROM EN AS CORRECTION.xlsx",
+    "Review_translations08.04.2026 (002) - TO TRANSLATE FROM EN WITH DE REFERENCE.xlsx",
+    "Review_translations08.04.2026 (002) - MENTIONED TERMS TO BE KEPT IN EN.xlsx"
+  ],
+  "total_colored_updates_applied": 362,
   "per_source": [
-    {
-      "source_file": "Review_translations08.04.2026 (002) - MENTIONED TERMS TO BE KEPT IN EN.xlsx",
-      "matched_ids": 2051,
-      "colored_updates_applied": 0,
-      "missing_ids_in_master": 148,
-      "duplicate_ids_detected": 0,
-      "duplicate_ids": [],
-      "matched_ids_different_row_number": 2051
-    },
     {
       "source_file": "Review_translations08.04.2026 (002) - TO TRANSLATE FROM DE WITH EN REFERENCE.xlsx",
       "matched_ids": 2051,
-      "colored_updates_applied": 70,
+      "colored_updates_applied": 102,
       "missing_ids_in_master": 148,
       "duplicate_ids_detected": 0,
       "duplicate_ids": [],
@@ -36,6 +33,15 @@
       "source_file": "Review_translations08.04.2026 (002) - TO TRANSLATE FROM EN WITH DE REFERENCE.xlsx",
       "matched_ids": 2051,
       "colored_updates_applied": 95,
+      "missing_ids_in_master": 148,
+      "duplicate_ids_detected": 0,
+      "duplicate_ids": [],
+      "matched_ids_different_row_number": 2051
+    },
+    {
+      "source_file": "Review_translations08.04.2026 (002) - MENTIONED TERMS TO BE KEPT IN EN.xlsx",
+      "matched_ids": 2051,
+      "colored_updates_applied": 146,
       "missing_ids_in_master": 148,
       "duplicate_ids_detected": 0,
       "duplicate_ids": [],
